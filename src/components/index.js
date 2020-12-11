@@ -7,10 +7,10 @@ const Index = () => {
     const [id, setId] = useState();
     const [name, setName] = useState();
     const [ok, setOk] = useState(false);
+    const url = "https://www.esotterik.io";
 
     useEffect(() => {
         const ws = new W3CWebSocket(`wss://u9j9kermu5.execute-api.us-east-1.amazonaws.com/dev`);
-
         ws.onopen = () =>  {
             //console.log("connected.");
             ws.send(JSON.stringify({
@@ -47,7 +47,7 @@ const Index = () => {
 
             {id && !name && !ok ? 
                 <div style={{paddingLeft :"10px", paddingRight:"10px", paddingTop:"10px", paddingBottom:"5px", backgroundColor:"white", borderRadius:"5px", margin:"0"}}>
-                    <QRCode fgColor="#282c34" value={`http://c39f312f2cc3.ngrok.io/welcome/${id}`}  onClick={() => console.log(id)}/>
+                    <QRCode fgColor="#282c34" value={`${url}/welcome/${id}`}  onClick={() => console.log(id)}/>
                 </div> : ""}
 
             {name && !ok ? 
