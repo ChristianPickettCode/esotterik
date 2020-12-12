@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { w3cwebsocket as W3CWebSocket } from "websocket";
+import crypto from "crypto-js";
+
+// Client
+/*
+    Open Websocket
+        connect
+        Send
+*/
 
 const Welcome = (props) => {
     const [active, setActive] = useState(false);
@@ -14,7 +22,7 @@ const Welcome = (props) => {
         ws.send(JSON.stringify({
             message: "send",
             to: param,
-            data: e,
+            data: crypto.AES.encrypt(e, param).toString(),
             action: "message"
         }));
     }

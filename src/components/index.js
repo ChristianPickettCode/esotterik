@@ -1,6 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import QRCode from "qrcode.react";
 import { w3cwebsocket as W3CWebSocket } from "websocket";
+import crypto from "crypto-js";
+
+// Server
+/*
+    Open Websocket
+        connect to url
+    Generate QR Code
+
+*/
 
 const Index = () => {
     const [toggle, setToggle] = useState(false);
@@ -8,6 +17,10 @@ const Index = () => {
     const [name, setName] = useState();
     const [ok, setOk] = useState(false);
     const url = "https://www.esotterik.io";
+
+    const parse = (encryptedData, ws) => {
+        setName(crypto.AES.decrypt(encryptedData, ws.id).toString(crypto.enc.Utf8));
+    }
 
     useEffect(() => {
         const ws = new W3CWebSocket(`wss://u9j9kermu5.execute-api.us-east-1.amazonaws.com/dev`);
@@ -28,9 +41,10 @@ const Index = () => {
                 const data = JSON.parse(msg.data);
                 if (data.status === "connect") {
                     setId(data.id);
+                    ws.id = data.id;
                 }
                 if (data.status === "send") {
-                    setName(data.data);
+                    parse(data.data, ws);
                 }
             }
         };
