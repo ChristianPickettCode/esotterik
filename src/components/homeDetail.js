@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
 const HomeDetail = (props) => {
-    const [currentUser, setCurrentUser] = useState({});
     const [param, setParam] = useState();
     const [app, setApp] = useState();
 
@@ -11,10 +10,9 @@ const HomeDetail = (props) => {
         const user = localStorage.getItem("user");
         if (user) {
             const parseUser = JSON.parse(user);
-            setCurrentUser(parseUser);
             setApp(parseUser.apps[id]);
         }
-    }, [])
+    }, [props.match.params.id])
 
     return (
         <div>

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { w3cwebsocket as W3CWebSocket } from "websocket";
 import crypto from "crypto-js";
 import { v4 as uuidv4 } from "uuid";
-import { Link } from 'react-router-dom';
 
 // Client
 /*
@@ -120,17 +119,6 @@ const Welcome = (props) => {
 
     return (
         <>
-            {/* <button style={{
-                position:"absolute", 
-                top:"10px", 
-                right:"0px", 
-                border:"none",
-                fontSize:"40px",
-                backgroundColor:"transparent",
-                cursor:"pointer"
-                }}><Link to="/home">🏠</Link></button> */}
-
-
             {userParams && userParams.has("name") && !saved ? 
                 <>
                     <h2 style={{margin:"0"}}>what's your name?</h2>

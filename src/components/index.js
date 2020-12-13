@@ -12,14 +12,8 @@ import crypto from "crypto-js";
 */
 
 const Index = ({request, response}) => {
-    // const [toggle, setToggle] = useState(false);
     const [id, setId] = useState();
-    // const [name, setName] = useState();
-    // const [ok, setOk] = useState(false);
-    // const [currentUser, setCurrentUser] = useState();
     const url = "https://www.esotterik.io"; 
-    
-
     const [requestString, setRequestString] = useState()
 
     const parse = (encryptedData, ws) => {
@@ -36,7 +30,6 @@ const Index = ({request, response}) => {
         let user = localStorage.getItem("user");
         if (user) {
             console.log(user);
-            // setSendData({...sendData, id: JSON.parse(user).id});
             response(JSON.parse(user));
             return true;
         }
@@ -83,49 +76,10 @@ const Index = ({request, response}) => {
 
     return (
         <>
-            {/* {ok ? 
-                <p onMouseEnter={() => setToggle(true)} onMouseLeave={() => setToggle(false)}>
-                    <a href="https://twitter.com/esotterik" target="blank">{toggle ? "❤️": "you are incredible."}</a>
-                </p> 
-            : ""} */}
-
-            {id ? 
+            { id ? 
                 <div style={{paddingLeft :"10px", paddingRight:"10px", paddingTop:"10px", paddingBottom:"5px", backgroundColor:"white", borderRadius:"5px", margin:"0"}}>
                     <QRCode fgColor="#282c34" value={`${url}/welcome/${id}/?${requestString}&appName=${request.appName}&appID=${request.appID}`}  onClick={() => console.log(id)}/>
                 </div> : ""}
-
-            {/* {name && !ok ? 
-                <>
-                    <p>how is your day {name}?</p>
-                    <div>
-                        <button 
-                            onClick={() => setOk(true)}
-                            style={{
-                                border:"none",
-                                backgroundColor:"transparent",
-                                color:"white",
-                                outline:"none",
-                                textDecoration:"underline",
-                                padding: "0",
-                                cursor:"pointer",
-                                marginRight:"10px"
-                            }}><h3 style={{padding:"0", margin:"0"}}>awesome.</h3></button>
-                        <button 
-                            onClick={() => setOk(true)}
-                            style={{
-                                border:"none",
-                                backgroundColor:"transparent",
-                                color:"white",
-                                outline:"none",
-                                textDecoration:"underline",
-                                padding: "0",
-                                cursor:"pointer"
-                            }}><h3 style={{padding:"0", margin:"0"}}>fantastic.</h3></button>
-                    </div>
-                    
-                    
-                </> : ""} */}
-            
         </>
     )
 }

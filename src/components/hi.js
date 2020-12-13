@@ -2,8 +2,9 @@ import React from 'react'
 
 const hi = (props) => {
     console.log(props);
-    return (
-        <div>
+
+    const LogOut = () => {
+        return(
             <button 
                 onClick={props.logout}
                 style={{
@@ -19,8 +20,13 @@ const hi = (props) => {
                 fontSize:"14px",
                 fontWeight:"bold"
                 }}>Log out</button>
+        )
+    }
+    
+    return (
+        <div style={{textAlign:"left"}}>
+            <LogOut />
             <h2>{props.request.appName}</h2>
-            <p>hi.</p>
             <p>{props.user.name}</p>
             <p>{props.user.email}</p>
             <p>{props.user.id}</p>
