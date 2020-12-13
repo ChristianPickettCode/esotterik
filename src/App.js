@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import "./App.css";
 
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -18,6 +21,15 @@ function App() {
 
   const [active, setActive] = useState(false);
 
+  const codeString = `
+    <Bridge request={{
+      data: ["email", "name"],
+      appName: "mango",
+      appID: "222"
+      }}>
+      <Hi />
+    </Bridge>`
+
   return (
     <Router>
       <div className="App">
@@ -28,7 +40,7 @@ function App() {
               <Route path="/welcome/:id" component={Welcome} />
               
               <Route path="/">
-
+                <>
                 {active ? 
                   <Bridge request={{
                     data: ["email", "name"],
@@ -38,7 +50,7 @@ function App() {
                     <Hi />
                   </Bridge>
                 : 
-                
+                <>
                 <button style={{
                   border: "none",
                   backgroundColor:"white",
@@ -46,11 +58,24 @@ function App() {
                   padding: "10px",
                   borderRadius:"5px",
                   width:"70px",
-                  cursor:"pointer"
-                  }} onClick={() => setActive(true)}>App</button> }
-                
-                
+                  cursor:"pointer",
+                  position:"absolute",
+                  top:"10px",
+                  right:"10px"
+                  }} onClick={() => setActive(true)}>App</button> 
+                  
+                  <SyntaxHighlighter language="javascript" style={vscDarkPlus}>
+                      {codeString}
+                  </SyntaxHighlighter>
+                  </>
+                  
+                  }
 
+                  
+                
+                <p style={{position:"absolute", bottom:"0px", fontSize:"16px"}}><a href="https://twitter.com/esotterik" target="blank">@esotterik</a></p>
+                
+                </>
               </Route>
             </Switch>
         </header>
