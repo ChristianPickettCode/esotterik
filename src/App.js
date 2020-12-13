@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
@@ -24,11 +24,17 @@ function App() {
   const codeString = `
     <Bridge request={{
       data: ["email", "name"],
-      appName: "mango",
-      appID: "222"
+      appName: "apple",
+      appID: "123"
       }}>
-      <Hi />
+      <App />
     </Bridge>`
+
+    useEffect(() => {
+      if(localStorage.getItem("user")) {
+        setActive(true);
+      }
+    }, [])
 
   return (
     <Router>
@@ -41,40 +47,48 @@ function App() {
               
               <Route path="/">
                 <>
-                {active ? 
-                  <Bridge request={{
-                    data: ["email", "name"],
-                    appName: "mango",
-                    appID: "222"
-                  }}>
-                    <Hi />
-                  </Bridge>
-                : 
-                <>
-                <button style={{
-                  border: "none",
-                  backgroundColor:"white",
-                  color: "#282c34",
-                  padding: "10px",
-                  borderRadius:"5px",
-                  width:"70px",
-                  cursor:"pointer",
-                  position:"absolute",
-                  top:"10px",
-                  right:"10px"
-                  }} onClick={() => setActive(true)}>App</button> 
-                  
-                  <SyntaxHighlighter language="javascript" style={vscDarkPlus}>
-                      {codeString}
-                  </SyntaxHighlighter>
-                  </>
-                  
-                  }
+                  { active ? 
+                    <Bridge request={{
+                      data: ["email", "name"],
+                      appName: "apple",
+                      appID: "123"
+                    }}>
+                      <Hi />
+                    </Bridge>
+                  : 
+                  <>
+                    <button style={{
+                      border: "none",
+                      backgroundColor:"white",
+                      color: "rgb(30, 30, 30)",
+                      padding: "10px",
+                      borderRadius:"5px",
+                      width:"70px",
+                      cursor:"pointer",
+                      position:"absolute",
+                      top:"10px",
+                      right:"10px",
+                      fontSize:"14px",
+                      fontWeight:"bold"
+                      }} onClick={() => setActive(true)}>App</button> 
+                      
+                      <div style={{ display: "flex", flexDirection:"row"}}>
+                        <div style={{width:"40%", marginRight:"5%", marginLeft:"5%"}}>
+                          <p>simple authentication react framework.</p>
+                        </div>
+                        <div style={{width:"50%", border:"5px solid white", borderRadius:"15px", marginRight:"2.5%"}}>
+                          <SyntaxHighlighter language="javascript" style={vscDarkPlus}>
+                              {codeString}
+                          </SyntaxHighlighter>
+                        </div>
+                      </div>
+                      
+                    </>
+                    
+                    }
 
+                  <p style={{position:"absolute", bottom:"0px", fontSize:"16px"}}><a href="https://twitter.com/esotterik" target="blank">@esotterik</a></p>
                   
-                
-                <p style={{position:"absolute", bottom:"0px", fontSize:"16px"}}><a href="https://twitter.com/esotterik" target="blank">@esotterik</a></p>
-                
                 </>
               </Route>
             </Switch>

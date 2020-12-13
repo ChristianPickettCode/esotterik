@@ -11,12 +11,13 @@ const hi = (props) => {
                 top:"10px", 
                 right:"10px", 
                 border:"none",
-                backgroundColor:"transparent",
                 cursor:"pointer",
                 padding:"10px",
                 backgroundColor:"white",
                 borderRadius:"5px",
-                color:"#282c34",
+                color:"rgb(30, 30, 30)",
+                fontSize:"14px",
+                fontWeight:"bold"
                 }}>Log out</button>
             <h2>{props.request.appName}</h2>
             <p>hi.</p>
