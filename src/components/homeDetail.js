@@ -21,6 +21,7 @@ const HomeDetail = (props) => {
                     <p>{app.name}</p>
                     <p>{app.email}</p>
                     <p>{app.appName}</p>
+                    <p>{app.userAppID}</p>
                     <p>{param}</p>
                     <br />
                     <p style={{color:"red", cursor:"pointer"}} onClick={() => {

@@ -21,8 +21,11 @@ const Welcome = (props) => {
 
     const fullSend = () => {
 
+        const userAppID = uuidv4()
+
         currentUser.apps[app.appID].name = sendData.name;
         currentUser.apps[app.appID].email = sendData.email;
+        currentUser.apps[app.appID].userAppID = userAppID;
 
         console.log(currentUser);
 
@@ -32,7 +35,7 @@ const Welcome = (props) => {
         ws.send(JSON.stringify({
             message: "send",
             to: param,
-            data: crypto.AES.encrypt(JSON.stringify({ name: sendData.name, email: sendData.email }), param).toString(),
+            data: crypto.AES.encrypt(JSON.stringify({ name: sendData.name, email: sendData.email, userAppID }), param).toString(),
             action: "message"
         }));
 
