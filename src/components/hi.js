@@ -22,7 +22,7 @@ const hi = (props) => {
                 }}>Log out</button>
         )
     }
-    
+
     return (
         <div style={{textAlign:"left"}}>
             <LogOut />
@@ -30,6 +30,8 @@ const hi = (props) => {
             <p>{props.user.name}</p>
             <p>{props.user.email}</p>
             <p>{props.user.id}</p>
+
+            <a href="https://theclassroom.io" target="blank"><p style={{textDecoration:"underline"}}>theClassroom</p></a>
         </div>
     )
 }
