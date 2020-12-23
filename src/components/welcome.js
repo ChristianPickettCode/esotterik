@@ -21,11 +21,9 @@ const Welcome = (props) => {
 
     const fullSend = () => {
 
-        const userAppID = uuidv4()
-
         currentUser.apps[app.appID].name = sendData.name;
         currentUser.apps[app.appID].email = sendData.email;
-        currentUser.apps[app.appID].userAppID = userAppID;
+        currentUser.apps[app.appID].userAppID = sendData.userAppID;
 
         console.log(currentUser);
 
@@ -35,7 +33,7 @@ const Welcome = (props) => {
         ws.send(JSON.stringify({
             message: "send",
             to: param,
-            data: crypto.AES.encrypt(JSON.stringify({ name: sendData.name, email: sendData.email, userAppID }), param).toString(),
+            data: crypto.AES.encrypt(JSON.stringify({ name: sendData.name, email: sendData.email, userAppID: sendData.userAppID }), param).toString(),
             action: "message"
         }));
 
@@ -49,7 +47,8 @@ const Welcome = (props) => {
             console.log(parsedUser)
             if (!parsedUser.apps[appID]) {
                 console.log("HAVEN'T SEEN THIS APP BEFORE");
-                parsedUser.apps[appID]  = { appName };
+                const userAppID = uuidv4();
+                parsedUser.apps[appID]  = { appName, userAppID };
             } else {
                 setSaved(true);
             }
