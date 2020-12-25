@@ -33,6 +33,7 @@ const Welcome = (props) => {
         ws.send(JSON.stringify({
             message: "send",
             to: param,
+            appID: app.appID,
             data: crypto.AES.encrypt(JSON.stringify({ name: sendData.name, email: sendData.email, userAppID: sendData.userAppID }), param).toString(),
             action: "message"
         }));
