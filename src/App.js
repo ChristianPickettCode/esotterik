@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./App.css";
 
 import {
@@ -8,25 +8,13 @@ import {
 } from "react-router-dom";
 
 import Welcome from "./components/welcome";
-// import Bridge from "./components/bridge";
 import Bridge from "@esotterik/bridge-library";
-import Hi from "./components/hi";
 import Home from "./components/home";
 import HomeDetail from "./components/homeDetail";
 import Landing from "./components/landing";
 
 // sick dude
 function App() {
-
-  // const [active, setActive] = useState(false);
-
-  
-
-  //   useEffect(() => {
-  //     if(localStorage.getItem("user")) {
-  //       setActive(true);
-  //     }
-  //   }, [])
 
   return (
     <Router>
