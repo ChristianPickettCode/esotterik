@@ -50,8 +50,8 @@ function App() {
                   { active ? 
                     <Bridge request={{
                       data: ["email", "name"],
-                      appName: "apple",
-                      appID: "123"
+                      appName: "Esotterik",
+                      appID: "1206e5f5-dd4f-437d-8869-81da01b705c6"
                     }}>
                       <Hi />
                     </Bridge>
