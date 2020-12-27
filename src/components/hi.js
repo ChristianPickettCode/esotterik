@@ -1,7 +1,6 @@
 import React from 'react'
 
 const hi = (props) => {
-    console.log(props);
 
     const LogOut = () => {
         return(
@@ -24,12 +23,12 @@ const hi = (props) => {
     }
 
     return (
-        <div style={{textAlign:"left"}}>
+        <div style={{textAlign:"left", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"}}>
             <LogOut />
             <h2>{props.request.appName}</h2>
             <p>{props.user.name}</p>
             <p>{props.user.email}</p>
-            <p>{props.user.id}</p>
+            <p>{props.user.userAppID}</p>
 
             <a href="https://theclassroom.io" target="blank"><p style={{textDecoration:"underline"}}>theClassroom</p></a>
         </div>
