@@ -25,12 +25,14 @@ const hi = (props) => {
     return (
         <div style={{textAlign:"left", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"}}>
             <LogOut />
-            <h2>{props.request.appName}</h2>
-            <p>{props.user.name}</p>
-            <p>{props.user.email}</p>
-            <p>{props.user.userAppID}</p>
+            <div style={{width:"60%", margin:"auto", textAlign:"left"}}>
+                <h2>AppName : {props.request.appName}</h2>
+                <p>Name : {props.user.name}</p>
+                <p>Email: {props.user.email}</p>
+                <p>ID : {props.user.userAppID}</p>
 
-            <a href="https://theclassroom.io" target="blank"><p style={{textDecoration:"underline"}}>theClassroom</p></a>
+                <p>My other projects : <a style={{textDecoration:"underline"}} href="https://atlis.dev" target="blank">atlis.dev</a>  &  <a style={{textDecoration:"underline"}} href="https://theclassroom.io" target="blank">theClassroom.io</a></p>
+            </div>
         </div>
     )
 }

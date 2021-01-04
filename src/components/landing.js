@@ -34,17 +34,18 @@ const Landing = (props) => {
                 fontWeight:"bold"
                 }} onClick={() => props.login()}>App</button> 
             
-            <div style={{ display: "flex", flexDirection:"row"}}>
-                <div style={{width:"40%", marginRight:"5%", marginLeft:"5%"}}>
-                <p>simple authentication react framework.</p>
-                </div>
-                <div style={{width:"50%", border:"5px solid white", borderRadius:"15px", marginRight:"2.5%"}}>
-                <SyntaxHighlighter language="javascript" style={vscDarkPlus}>
-                    {codeString}
-                </SyntaxHighlighter>
-                </div>
-            </div>
-            </div>
+             <p>hi.</p>
+                {/* <div style={{ display: "flex", flexDirection:"row"}}>
+                    <div style={{width:"40%", marginRight:"5%", marginLeft:"5%"}}>
+                    <p>simple authentication react framework.</p>
+                    </div>
+                    <div style={{width:"50%", border:"5px solid white", borderRadius:"15px", marginRight:"2.5%"}}>
+                    <SyntaxHighlighter language="javascript" style={vscDarkPlus}>
+                        {codeString}
+                    </SyntaxHighlighter>
+                    </div>
+                </div> */}
+        </div>
     )
 }
 
